@@ -16,6 +16,9 @@ import { Surreal } from 'surrealdb.node'
     }
 
     await db.connect(connector.url)
+    // reproducing the 'Select either namespace or database to use', error
+    await db.use({ database: connector.dbName})
+
     await db.signin({
         namespace: connector.namespace,
         database: connector.dbName,
